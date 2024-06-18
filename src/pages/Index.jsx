@@ -14,8 +14,13 @@ const Index = () => {
       header: true,
       skipEmptyLines: true,
       complete: (result) => {
-        setHeaders(Object.keys(result.data[0]));
-        setData(result.data);
+        if (result.data.length > 0) {
+          setHeaders(Object.keys(result.data[0]));
+          setData(result.data);
+        } else {
+          setHeaders([]);
+          setData([]);
+        }
       },
     });
   };
